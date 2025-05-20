@@ -1,0 +1,49 @@
+.current-country {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: .5s ease-in-out;
+}
+
+.current-country.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.current-country>div:first-child {
+    background-color: rgb(128, 57, 18);
+    border-radius: 0 0 0 5px;
+    padding: 1px;
+}
+
+.current-country .country {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+.current-country .country .flag-content {
+    width: 20px;
+    margin-right: 5px;
+}
+
+.current-country .country .code-content {
+    
+}
+
+.all-flags-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: rgb(117, 176, 215);
+    border-radius: 5px;
+    overflow-y: scroll;
+    max-height: 0;
+    transition: .5s ease-in-out;
+}
+
+.all-flags-content.active {
+    max-height: 300px;
+}

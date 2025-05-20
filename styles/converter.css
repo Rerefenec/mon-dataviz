@@ -1,0 +1,94 @@
+.convert-container {
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .8);
+}
+
+.convert-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.converter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 300px;
+    max-width: 95%;
+    max-height: 95%;
+    background-color: var(--green);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.converter-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.converter form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.converter label {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: var(--dark_bleu);
+}
+
+.converter input {
+    width: 60px;
+    height: 30px;
+    margin-right: 10px;
+    background-color: transparent;
+    color: var(--green);
+    border: none;
+    outline: none;
+    border-right: 1px solid white;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.converter select {
+    width: 200px;
+    height: 30px;
+    background-color: var(--dark_bleu);
+    color: var(--green);
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.converter .buttons {
+    margin: 0 auto;
+    width: fit-content;
+}
