@@ -11,9 +11,9 @@
 
     <!-- Scripts -->
     <script type="module" src="./scripts/script.js" defer></script>
-    <script type="module" src="./scripts/select_country.js" defer></script>
-    <script type="module" src="./scripts/choice_country.js" defer></script>
-    <script type="module" src="./scripts/devises.js" defer></script>
+    <script type="module" src="./scripts/select_country.js?v=2" defer></script>
+    <script type="module" src="./scripts/choice_country.js?v=2" defer></script>
+    <script type="module" src="./scripts/devises.js?v=2" defer></script>
 
     <!-- Style -->
     <link rel="stylesheet" href="./styles/style.css">
@@ -25,11 +25,12 @@
         <div class="choice-country">
             <h1>Change my flouze</h1>
             <form>
-                <label for="">Dans quel pays te trouves-tu ?</label>
+                <label for="country-select">Dans quel pays te trouves-tu ?</label>
                 <select name ="country" id="country-select">
                     <option value="">Choix du Pays</option>
 
                 </select>
+                <p id="country-error" class="hidden" role="alert">Aucun pays disponible pour le moment.</p>
                 <button id="next-button">Suivant</button>
                 <!-- ------ mettre le formulaire pour le pays de l'utilisateur ici ------ -->
 

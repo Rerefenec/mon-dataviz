@@ -16,14 +16,27 @@ const initAskCountry = (countries) => {
         countrySelect.innerHTML += `<option value="${country.codecountry}">${country.name}</option>`;
     });
 
+    // show a message if no countries were added
+    const countryError = document.getElementById('country-error');
+    if (countrySelect.options.length <= 1) {
+        if (countryError) countryError.classList.remove('hidden');
+    } else {
+        if (countryError) countryError.classList.add('hidden');
+    }
+
     //peut avoir à partir de la window pour mettre en valeur par default ??
 
     // Ajout Event click sur le bouton pour enrgistrer le pays choisi
-    nextButton.addEventListener("click", () => {
+    nextButton.addEventListener("click", (event) => {
         event.preventDefault();
 
         // enregistre le pays
         let selectedCountry = countrySelect.value;
+
+        if (!selectedCountry) {
+            alert("Veuillez choisir un pays.");
+            return;
+        }
 
         // init l'onglet de changement de pays
         initChangeCountry(selectedCountry, choiceCountries);

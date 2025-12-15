@@ -24,6 +24,12 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* Utility hidden class */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
 html, body {
   position: relative;
   margin: 0;

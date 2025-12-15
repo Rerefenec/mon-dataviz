@@ -1,5 +1,3 @@
-import { choiceCountries } from "./select_country.js";
-
 const converter = document.querySelector(".convert-container");
 const input1 = document.querySelector("#input1");
 const input2 = document.querySelector('#input2');
@@ -8,12 +6,14 @@ let optionsList1 = document.querySelectorAll("#devise-select-1 option");
 let optionsList2 = document.querySelectorAll("#devise-select-1 option");
 const button = document.querySelector('.converter button');
 const converterClose = document.querySelector(".converter-close");
+let countriesList = [];
 
 const initConverter = (countries) => {
     // le param datas = json
     let devises = [];
     let go = true;
     countries.forEach(country => {
+        if (!country || !country.codeDevise || !country.devise) return;
         devises.push([country.codeDevise, country.devise])
     })
 
@@ -38,6 +38,11 @@ const initConverter = (countries) => {
     })
 }
 
+export const initConverterWithCountries = (countries) => {
+    countriesList = countries || [];
+    initConverter(countriesList);
+}
+
 export const handleDisplayConverter = (b) => {
     if (b) {
         converter.classList.remove("hidden");
@@ -47,14 +52,11 @@ export const handleDisplayConverter = (b) => {
 }
 
 export const updateConverter = (index, value) => {
-    const theCountry = choiceCountries.find((country) => {
-        return country.codecountry === value
-    })
-    if (index === 0) {
-        document.querySelector(`#devise-select-1 option[value="${theCountry.codeDevise}"`).selected = true;
-    } else {
-        document.querySelector(`#devise-select-2 option[value="${theCountry.codeDevise}"`).selected = true;
-    }
+    const theCountry = countriesList.find((country) => country.codecountry === value);
+    if (!theCountry) return;
+    const selector = index === 0 ? `#devise-select-1 option[value="${theCountry.codeDevise}"]` : `#devise-select-2 option[value="${theCountry.codeDevise}"]`;
+    const opt = document.querySelector(selector);
+    if (opt) opt.selected = true;
 }
 
 const handleConvertion = async (value1, value2, amount) => {
@@ -80,8 +82,4 @@ converterClose.addEventListener("click", () => {
     converter.classList.add("hidden");
 })
 
-setTimeout(async () => {
-    initConverter(choiceCountries);
-    optionsList1 = document.querySelectorAll("#devise-select-1 option");
-    optionsList2 = document.querySelectorAll("#devise-select-1 option");
-}, 5000)
+// Initialization should be triggered by the module that has the countries data
